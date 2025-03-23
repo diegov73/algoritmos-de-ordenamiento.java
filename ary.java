@@ -8,7 +8,7 @@ public class ary {
     static void llenar(int[] A){
         
         for (int i = 0; i < A.length; i++) {
-            int x = ram.nextInt(100)+1;
+            int x = ram.nextInt(10)+1;
             A[i] = x;
         }
     }
@@ -39,9 +39,37 @@ public class ary {
     
 
     static void QS(int[] A){
-        int i = 0;
-        int j = A.length-1;
-
+        int aux;
+        int qs=A.length-1;
+        for (int i = 0; i < A.length-1; i++){
+            for (int j = i+1; j < A.length; j++){
+                int ii = qs-i;
+                int jj = qs-j;
+                System.out.println("i: " + i + "  " + A[i] + " /j: " + j + "  " + A[j] + " /ii: " + ii + "  " + A[ii] + " /jj: " + jj + "  " + A[jj]);
+                
+                if(A[i]>A[ii]){
+                    aux = A[ii];
+                    A[i]=A[ii];
+                    A[ii]=aux;
+                }
+                if(A[i]>A[j]){
+                    aux = A[i];
+                    A[i]=A[j];
+                    A[j]=aux;
+                }
+                if(A[ii]<A[jj]){
+                    aux = A[ii];
+                    A[ii]=A[jj];
+                    A[jj]=aux;
+                }
+                if(A[i]>A[ii]){
+                    aux = A[ii];
+                    A[i]=A[ii];
+                    A[ii]=aux;
+                }
+                SOP(A);
+            }
+        }
     }
 
     public static void main(String [] args) throws IOException{
@@ -49,11 +77,11 @@ public class ary {
         BufferedWriter BR = new BufferedWriter(new OutputStreamWriter(System.out));
         BufferedReader BW = new BufferedReader(new InputStreamReader(System.in));
         
-        int C = 30;
+        int C = 6;
         int[] A = new int[C];
 
         llenar(A);
         SOP(A);
-        BS(A);        
+        QS(A);        
     }
 }
