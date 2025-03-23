@@ -1,28 +1,59 @@
 import java.io.*;
 import java.util.Random;
 
-class arreglo{
-    int C = 40;
-    int[] B = new int[C];
-    Random srand = new Random();
+public class ary {
 
-    void arrre(){
-        for(int i = 0; i<C; i++){
-            int x = srand.nextInt(100);
-            B[i] = x;
-            System.out.println(B[i]);
+    static Random ram = new Random();
+
+    static void llenar(int[] A){
+        
+        for (int i = 0; i < A.length; i++) {
+            int x = ram.nextInt(100)+1;
+            A[i] = x;
         }
     }
-}
 
-public class ary {
+    static void SOP(int[] A){
+        for (int i = 0; i < A.length; i++) {
+            System.out.print(A[i]+" ");
+        }
+        System.out.println(" ");
+    }
+
+    static void BS(int[] A){
+
+        int aux;
+
+        for(int i = 0; i<A.length-1; i++){
+            for (int j = i+1; j < A.length; j++) {
+                System.out.println("i:"+i+" "+"j:"+j);
+                if(A[i]>A[j]){
+                    aux = A[i];
+                    A[i]=A[j];
+                    A[j]=aux;
+                }
+                SOP(A);
+                }
+            }
+        }
+    
+
+    static void QS(int[] A){
+        int i = 0;
+        int j = A.length-1;
+
+    }
+
     public static void main(String [] args) throws IOException{
         
         BufferedWriter BR = new BufferedWriter(new OutputStreamWriter(System.out));
         BufferedReader BW = new BufferedReader(new InputStreamReader(System.in));
-        arreglo base = new arreglo();
-        boolean T = true;      
+        
+        int C = 30;
+        int[] A = new int[C];
 
-        base.arrre();
+        llenar(A);
+        SOP(A);
+        BS(A);        
     }
 }
